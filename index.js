@@ -56,19 +56,15 @@ function DNAStrand(dna){
   // Leave punctuation marks untouched.
 
   function pigIt(str){
-    // turn string of words into array of words w punctuation in its own index
-    let regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
-
     strArray = str.split(" ")
 
     for(let i=0; i < strArray.length;i+= 1){
         let endLetter = strArray[i][0]
-        if (strArray[i][strArray[i].length] != "!" || strArray[i][strArray[i].length] != "?"){
-          strArray[i] = strArray[i].slice(1, strArray[i].length) + endLetter + "ay"
-        }
+        strArray[i] = strArray[i].slice(1, strArray[i].length) + endLetter + "ay"
     }
 
-    return strArray.join(" ")
+    strArray[strArray.length-1][0] === "!" ? strArray[strArray.length-1] = strArray[strArray.length-1][0]: null
+    strArray[strArray.length-1][0] === "?" ? strArray[strArray.length-1] = strArray[strArray.length-1][0]: null
 
-    // move first letter to end + ay
+    return strArray.join(" ")
   }
