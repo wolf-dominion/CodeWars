@@ -50,3 +50,25 @@ function DNAStrand(dna){
     return song.replace(/\s+/g,' ').trim();
 
   }
+
+  // Move the first letter of each word to the end of it, 
+  // then add "ay" to the end of the word. 
+  // Leave punctuation marks untouched.
+
+  function pigIt(str){
+    // turn string of words into array of words w punctuation in its own index
+    let regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+
+    strArray = str.split(" ")
+
+    for(let i=0; i < strArray.length;i+= 1){
+        let endLetter = strArray[i][0]
+        if (strArray[i][strArray[i].length] != "!" || strArray[i][strArray[i].length] != "?"){
+          strArray[i] = strArray[i].slice(1, strArray[i].length) + endLetter + "ay"
+        }
+    }
+
+    return strArray.join(" ")
+
+    // move first letter to end + ay
+  }
