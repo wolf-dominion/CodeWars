@@ -117,3 +117,33 @@ function dividedBy(r) {
     return l / r; 
   }; 
 }
+
+// Write a function that takes in a string of one or more words, 
+// and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). 
+// Strings passed in will consist of only letters and spaces. 
+// Spaces will be included only when more than one word is present.
+
+// Examples: spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw" 
+// spinWords( "This is a test") => returns "This is a test" 
+// spinWords( "This is another test" )=> returns "This is rehtona test"
+
+function spinWords(str){
+  let strArray = str.split(" ");
+  let modifiedArray = [];
+
+  for(let i=0; i < strArray.length;i+= 1){
+    
+    if(strArray[i].length > 4){
+      let word = strArray[i].split("");
+      let modifiedWord = [];
+      for(let y=word.length-1; y >= 0;y--){
+        modifiedWord.push(word[y]);
+      }
+      modifiedArray.push(modifiedWord.join(""));
+    }
+    else {
+      modifiedArray.push(strArray[i]);
+    }
+  }
+  return modifiedArray.join(" ");
+}
