@@ -147,3 +147,39 @@ function spinWords(str){
   }
   return modifiedArray.join(" ");
 }
+
+// Count the number of Duplicates
+// Write a function that will return the count of distinct case-insensitive 
+// alphabetic characters and numeric digits that occur more than once in the input string. 
+// The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+function duplicateCount(text){
+  text = text.toLowerCase();
+  let count = {};
+  let array = text.split("");
+
+  for(let i=0; i < array.length; i++){
+    for(let y=0; y < array.length;y++){
+      if(array[i] === array[y]){
+        if (count[array[i]]=== 0) {
+          count[array[i]]+= 1;
+        }
+        else if(!count[array[i]]){
+          count[array[i]] = 0
+          }
+      }
+    }
+  }
+
+  let results = 0;
+
+for (var key in count) {
+    if (count.hasOwnProperty(key)) {
+        if(count[key] > 0){
+        	results++;
+        }
+    }
+}
+  return results;
+  }
+  
