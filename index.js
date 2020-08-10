@@ -190,13 +190,42 @@ for (var key in count) {
   // A string representation of an integer will contain no 
   // characters besides the ten numerals "0" to "9".
 
-  function sumStrings(a,b) { 
-    function parseString(num){
-      if(Number.isNaN(parseInt(num, 10))){
-        return 0
-      } else {
-        return parseInt(num, 10)
-      }
+function sumStrings(a, b){
+  let sum = '';
+  let carry = 0;
+
+  if(a.length < b.length){
+    while(a.length != b.length){
+      a = '0' + a;
     }
-    return (BigInt(parseString(a)) + BigInt(parseString(b))).toString()
   }
+  if(a.length > b.length){
+    while(a.length != b.length){
+      b = '0' + b;
+    }
+  }
+
+  for (let i = a.length-1; i >= 0; i--){
+    const aNum = +a[i];
+    const bNum = +b[i];
+    const innerSum = aNum + bNum + carry;
+
+    let placeNum = innerSum % 10;
+
+    if(innerSum > 9){
+      placeNum = innerSum % 10;
+      carry = Math.floor(innerSum / 10); 
+    } else {
+      carry = '';
+    }
+
+    sum = placeNum + sum;
+
+  }
+  sum = carry + sum;
+
+  while (sum[0] == '0'){
+    sum = sum.slice(1);
+  }
+  return sum;
+}
