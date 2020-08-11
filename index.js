@@ -242,7 +242,7 @@ function humanReadable(num) {
 
   let hours = num >= 60 ? padNum(Math.floor(num/3600)) : '00';
   let minutes = num >= 60 ? padNum(Math.floor((num % 3600)/60)) : '00';
-  let seconds = num < 60 ? padNum(num) : num == 60 ? '00' : padNum(Math.floor((num % 3600)/60));
+  let seconds = num < 60 ? padNum(num) : padNum(Math.floor((num % 3600)%60));
 
   function padNum(num){
     return num < 10 ? `0${num}` : `${num}`
