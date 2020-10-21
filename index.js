@@ -285,7 +285,6 @@ Array.prototype.sameStructureAs = function (other) {
 
   // every keeps the loop going unless something return false, then it stops entirely 
   return this.every((element, i) => {
-    const element = this[i];
     const otherElement = other[i];
     if (isArray(element) && !element.sameStructureAs(otherElement)){
       return false;
