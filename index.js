@@ -251,3 +251,63 @@ function humanReadable(num) {
   return `${hours}:${minutes}:${seconds}`
 
 }
+
+// Complete the function/method (depending on the language) to return true/True 
+// when its argument is an array that has the same nesting structures and same 
+// corresponding length of nested arrays as the first array.
+
+Array.prototype.sameStructureAs = function (other) {
+  // Return 'true' if and only if 'other' has the same
+  // nesting structure as 'this'.
+
+  // Note: You are given a function isArray(o) that returns
+  // whether its argument is an array.
+
+// my first attempt: 
+//   const arrayA = Array.prototype.sameStructureAs
+//   const arrayB = other
+//   let bool = true
+
+//   for (let i = 0; i < arrayA.length; i++){
+//     if (arrayA[i].constructor === Array && arrayB[i].constructor === Array){
+//       if (arrayA[i].length === arrayB[i].length){
+//         bool = false
+//       }
+//     } else bool = false 
+//   }
+//   return bool
+// };
+
+// Notes: The prototype is being used so you can say "this" and it will be the same as the first array in the comparison
+Array.prototype.sameStructureAs = function (other) {
+  if(!isArray(other)) return false;
+  if (this.length != other.length) return false;
+
+  // every keeps the loop going unless something return false, then it stops entirely 
+  return this.every((element, i) => {
+    const element = this[i];
+    const otherElement = other[i];
+    if (isArray(element) && !element.sameStructureAs(otherElement)){
+      return false;
+    } else if (!isArray(element) && isArray(otherElement)) {
+      return false;
+    }
+    return true;
+  })
+  // for loop version
+  // for (let i = 0; i < this.length; i++) {
+  //   const element = this[i];
+  //   const otherElement = other[i];
+  //   if (isArray(element) && !element.sameStructureAs(otherElement)){
+  //     return false
+  //   } else if (!isArray(element) && isArray(otherElement)) {
+  //     return false;
+  //   }
+  // }
+};
+
+// Human readable duration format
+
+function formatDuration (seconds) {
+  // Complete this function
+}
